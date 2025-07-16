@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Username Modal -->
+        <div id="usernameModal" class="modal">
+            <div class="modal-content">
+                <h2>Join Chat</h2>
+                <p>Enter your username to start chatting</p>
+                <input type="text" id="usernameInput" placeholder="Enter username..." maxlength="20">
+                <button id="joinBtn">Join Chat</button>
+                <div id="usernameError" class="error-message"></div>
+            </div>
+        </div>
+
+        <!-- Main Chat Interface -->
+        <div id="chatContainer" class="chat-container hidden">
+            <header class="chat-header">
+                <h1>Real-time Chat</h1>
+                <div class="user-info">
+                    <span id="currentUsername"></span>
+                    <button id="logoutBtn" class="logout-btn">Logout</button>
+                </div>
+            </header>
+
+            <div class="chat-layout">
+                <!-- Users Sidebar -->
+                <aside class="users-sidebar">
+                    <h3>Online Users (<span id="usersCount">0</span>)</h3>
+                    <div id="usersList" class="users-list"></div>
+                </aside>
+
+                <!-- Chat Main Area -->
+                <main class="chat-main">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="no-conversation">
+                            <h3>Welcome to Private Chat</h3>
+                            <p>Select a user from the sidebar to start a private conversation.</p>
+                            <p>All messages are private - there is no public chat.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="typing-indicator" id="typingIndicator"></div>
+                    
+                    <div class="chat-input-container">
+                        <div class="private-message-indicator" id="privateMessageIndicator"></div>
+                        <div class="chat-input-wrapper">
+                            <input type="text" id="messageInput" placeholder="Select a user to send a private message..." maxlength="500" disabled>
+                            <button id="sendBtn">Send</button>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- Connection Status -->
+        <div id="connectionStatus" class="connection-status"></div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>
